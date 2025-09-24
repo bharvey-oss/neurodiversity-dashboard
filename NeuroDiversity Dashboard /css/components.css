@@ -1,0 +1,68 @@
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.export-buttons {
+    position: fixed;
+    top: 20px;
+    right: 80px;
+    display: flex;
+    gap: 10px;
+    z-index: 999;
+}
+
+.export-btn {
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.sync-status {
+    position: fixed;
+    top: 20px;
+    right: 390px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.sync-status.synced {
+    background: #dcfce7;
+    color: #14532d;
+}
+
+.sync-status.offline {
+    background: #fee2e2;
+    color: #7f1d1d;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

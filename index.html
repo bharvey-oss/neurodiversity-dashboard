@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurodiversity Center Project Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sync Status Indicator -->
+        <div class="sync-status offline" id="syncStatus">
+            <div class="sync-indicator"></div>
+            <span id="syncText">Offline Mode</span>
+        </div>
+        
+        <!-- Top Bar Controls -->
+        <div class="export-buttons">
+            <button class="export-btn" onclick="DashboardSync.showSetupModal()" style="background: #667eea; color: white;">
+                <span>⚙️</span>
+                <span>Setup Sync</span>
+            </button>
+            <button class="export-btn" onclick="DashboardExport.exportToPDF()">
+                <span>📄</span>
+                <span>Export PDF</span>
+            </button>
+            <button class="export-btn" onclick="DashboardExport.exportToCSV()">
+                <span>📊</span>
+                <span>Export CSV</span>
+            </button>
+        </div>
+        
+        <!-- Active Users Display -->
+        <div class="active-users" id="activeUsers">
+            <div class="active-users-title">Active Now</div>
+            <div id="usersList">
+                <span class="user-avatar">You</span>
+            </div>
+        </div>
+        
+        <!-- Notification Bell -->
+        <button class="notification-bell" onclick="DashboardNav.toggleNotifications()">
+            <span>🔔</span>
+            <span class="notification-badge" id="notificationCount">3</span>
+        </button>
+        
+        <!-- Notification Panel -->
+        <div class="notification-panel" id="notificationPanel">
+            <div class="notification-header">📬 Reminders & Alerts</div>
+            <div class="notification-item">
+                <div class="notification-title">⚠️ Critical: IRS Form 1023</div>
+                <div class="notification-text">Must be filed by October 23 - 6 month processing time!</div>
+                <div class="notification-time">Due in 30 days</div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-title">📅 Tenant Notice Deadline</div>
+                <div class="notification-text">6-month notice must be sent for March vacancy</div>
+                <div class="notification-time">Due in 30 days</div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-title">💰 Grant Opportunity</div>
+                <div class="notification-text">Doug Flutie Foundation quarterly deadline approaching</div>
+                <div class="notification-time">Due in 45 days</div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" onclick="DashboardNav.toggleSidebar()">☰</button>
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">🧠 Neurodiversity Center</div>
+                <div class="sidebar-subtitle">Long Beach, CA | Project Dashboard</div>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active" onclick="DashboardNav.showSection('overview', this)">
+                    <span class="nav-icon">📊</span>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('calendar', this)">
+                    <span class="nav-icon">📅</span>
+                    <span>Calendar View</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('timeline', this)">
+                    <span class="nav-icon">⏰</span>
+                    <span>Timeline</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('checklist', this)">
+                    <span class="nav-icon">✅</span>
+                    <span>Master Checklist</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('budget', this)">
+                    <span class="nav-icon">💰</span>
+                    <span>Budget Tracker</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('grants', this)">
+                    <span class="nav-icon">🎁</span>
+                    <span>Grant Tracker</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('nonprofit', this)">
+                    <span class="nav-icon">🤝</span>
+                    <span>501(c)(3) Setup</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('compliance', this)">
+                    <span class="nav-icon">⚖️</span>
+                    <span>Compliance</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('documents', this)">
+                    <span class="nav-icon">📁</span>
+                    <span>Documents</span>
+                </div>
+                <div class="nav-item" onclick="DashboardNav.showSection('resources', this)">
+                    <span class="nav-icon">📚</span>
+                    <span>Resources</span>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Content sections will be loaded here -->
+            <div id="content-container"></div>
+        </main>
+    </div>
+    
+    <!-- Setup Modal -->
+    <div id="setup-modal-container"></div>
+    
+    <!-- Load Configuration -->
+    <script src="js/config.js"></script>
+    
+    <!-- Load Core Modules -->
+    <script src="js/navigation.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/budget.js"></script>
+    <script src="js/grants.js"></script>
+    <script src="js/nonprofit.js"></script>
+    <script src="js/compliance.js"></script>
+    <script src="js/documents.js"></script>
+    <script src="js/sync.js"></script>
+    <script src="js/export.js"></script>
+    
+    <!-- Load Section Templates -->
+    <script src="js/sections/overview.js"></script>
+    <script src="js/sections/calendar-view.js"></script>
+    <script src="js/sections/timeline.js"></script>
+    <script src="js/sections/checklist.js"></script>
+    <script src="js/sections/budget-section.js"></script>
+    <script src="js/sections/grants-section.js"></script>
+    <script src="js/sections/nonprofit-section.js"></script>
+    <script src="js/sections/compliance-section.js"></script>
+    <script src="js/sections/documents-section.js"></script>
+    <script src="js/sections/resources-section.js"></script>
+    
+    <!-- Initialize Dashboard -->
+    <script src="js/main.js"></script>
+</body>
+</html>
